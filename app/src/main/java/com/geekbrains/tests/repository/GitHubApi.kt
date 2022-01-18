@@ -10,7 +10,7 @@ import retrofit2.http.Query
  * Документация https://developer.github.com/v3/search/
  */
 
-internal interface GitHubApi {
+interface GitHubApi {
 
     @Headers("Accept: application/vnd.github.mercy-preview+json")
     @GET("search/repositories")

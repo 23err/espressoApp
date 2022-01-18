@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-internal class GitHubRepository(private val gitHubApi: GitHubApi) : RepositoryContract {
+class GitHubRepository(private val gitHubApi: GitHubApi) : RepositoryContract {
 
     override fun searchGithub(
         query: String,

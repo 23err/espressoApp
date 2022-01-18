@@ -7,6 +7,7 @@ import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.tests.BuildConfig
+import com.geekbrains.tests.Factory.RepositoryFactory
 import com.geekbrains.tests.R
 import com.geekbrains.tests.model.SearchResult
 import com.geekbrains.tests.presenter.RepositoryContract
@@ -67,19 +68,10 @@ class MainActivity : AppCompatActivity(), ViewSearchContract {
     }
 
     private fun createRepository(): RepositoryContract {
-        return if (BuildConfig.TYPE == FAKE) {
-            FakeGitHubRepository()
-        } else {
-            GitHubRepository(createRetrofit().create(GitHubApi::class.java))
-        }
+        return RepositoryFactory.getRepository()
     }
 
-    private fun createRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+
 
     override fun displaySearchResults(
         searchResults: List<SearchResult>,

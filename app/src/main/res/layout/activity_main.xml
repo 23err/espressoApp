@@ -17,15 +17,24 @@
 
     <EditText
         android:id="@+id/searchEditText"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/search_hint"
         android:imeOptions="actionSearch"
         android:inputType="text"
         android:maxLines="1"
         android:singleLine="true"
+        app:layout_constraintEnd_toStartOf="@+id/btnFind"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnFind"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:text="@string/find"
+        app:layout_constraintBaseline_toBaselineOf="@id/searchEditText"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/toDetailsActivityButton"

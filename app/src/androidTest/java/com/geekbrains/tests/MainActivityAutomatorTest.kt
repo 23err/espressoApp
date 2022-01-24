@@ -4,10 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso
-import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -15,8 +12,6 @@ import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.Until
-import org.hamcrest.Matchers.`is`
-import org.hamcrest.Matchers.not
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -73,7 +68,7 @@ class MainActivityAutomatorTest {
             Until.findObject(By.res(packageName, "totalCountTextView")),
             TIMEOUT
         )
-        Assert.assertEquals(changedText.text.toString(), "Number of results: 696")
+        Assert.assertEquals(changedText.text.toString(), TEST_NUMBER_OF_RESULTS_MINUS_696)
     }
 
     @Test
@@ -85,7 +80,7 @@ class MainActivityAutomatorTest {
             Until.findObject(By.res(packageName, "totalCountTextView")),
             TIMEOUT
         )
-        Assert.assertEquals(changedText.text.toString(), "Number of results: 696")
+        Assert.assertEquals(changedText.text.toString(), TEST_NUMBER_OF_RESULTS_MINUS_696)
     }
 
     @Test
@@ -101,7 +96,7 @@ class MainActivityAutomatorTest {
             Until.newWindow(), TIMEOUT
         )
         val totalCountTextView = device.findObject(By.res(packageName, "totalCountTextView"))
-        Assert.assertEquals(totalCountTextView.text.toString(), "Number of results: 696")
+        Assert.assertEquals(totalCountTextView.text.toString(), TEST_NUMBER_OF_RESULTS_MINUS_696)
     }
 
     @Test
@@ -113,9 +108,9 @@ class MainActivityAutomatorTest {
         val plusButton = device.findObject(By.res(packageName, "incrementButton"))
         val totalCountTextView = device.findObject(By.res(packageName, "totalCountTextView"))
         minusButton.click()
-        Assert.assertEquals(totalCountTextView.text.toString(), "Number of results: -1")
+        Assert.assertEquals(totalCountTextView.text.toString(), TEST_NUMBER_OF_RESULTS_MINUS_1)
         plusButton.click()
-        Assert.assertEquals(totalCountTextView.text.toString(), "Number of results: 0")
+        Assert.assertEquals(totalCountTextView.text.toString(), TEST_NUMBER_OF_RESULTS_ZERO)
     }
 
     @Test

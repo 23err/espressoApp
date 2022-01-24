@@ -31,6 +31,16 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    sourceSets{
+        androidTest {
+            java.srcDirs += "src/sharedTestData/java"
+        }
+        test {
+            java.srcDirs += "src/sharedTestData/java"
+        }
+    }
+
     testOptions {
         unitTests {
             includeAndroidResources = true
@@ -64,7 +74,7 @@ dependencies {
     //Test core
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha03'
     //Mockito
     testImplementation "org.mockito:mockito-core:2.19.0"
     testImplementation 'org.mockito:mockito-inline:2.8.9'
@@ -78,8 +88,9 @@ dependencies {
     testImplementation 'androidx.test:runner:1.4.0'
     testImplementation 'androidx.test.ext:junit:1.1.3'
     testImplementation 'androidx.test.ext:truth:1.4.0'
-    testImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha03'
     testImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
     //UI Automator
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    androidTestImplementation 'androidx.test:rules:1.4.1-alpha03'
 }
